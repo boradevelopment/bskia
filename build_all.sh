@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
 set -e  # exit on error
-
 # --- Detect OS ---
 OS="$(uname)"
 case "$OS" in
@@ -40,4 +38,4 @@ if [ "$PLATFORM" = "Linux" ] || [ "$PLATFORM" = "macOS" ]; then
     wait $PID2
 fi
 
-echo "✅ Build finished for both Release and Debug"
+echo "Build finished for both Release and Debug!"
