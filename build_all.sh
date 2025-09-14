@@ -38,4 +38,4 @@ if [ "$PLATFORM" = "Linux" ] || [ "$PLATFORM" = "macOS" ]; then
     wait $PID2
 fi
 
-echo "Build finished for both Release and Debug!"
+echo "Build finished for both Release and Debug!!"
