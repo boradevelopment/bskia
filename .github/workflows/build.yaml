@@ -15,6 +15,12 @@ jobs:
           chmod +x ./build_all.sh
           ./build_all.sh
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-linux
+          path: out/*
+
   build-windows:
     name: Build on Windows
     runs-on: windows-latest
@@ -26,6 +32,12 @@ jobs:
         shell: bash
         run: |
          ./build_all.bat
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-windows
+          path: out/*
 
   build-macos-arm:
     name: Build on macOS ARM
@@ -40,6 +52,12 @@ jobs:
           chmod +x ./build_all.sh
           ./build_all.sh
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-osx-arm
+          path: out/*
+
   build-macos-x86:
     name: Build on macOS x86
     runs-on: macos-13
@@ -49,6 +67,11 @@ jobs:
 
       - name: Build
         run: |
-          
           chmod +x ./build_all.sh
           ./build_all.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-osx-x86
+          path: out/*
