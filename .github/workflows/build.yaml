@@ -2,8 +2,8 @@ name: Build on push
 on: [push]
 
 jobs:
-  build-linux:
-    name: Build on Linux
+  build-linux-x86:
+    name: Build on Linux x86
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout Project
@@ -18,11 +18,30 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build-linux
+          name: build-linux-x86
           path: out/*
 
-  build-windows:
-    name: Build on Windows
+  build-linux-arm:
+    name: Build on Linux ARM
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v4.2.2
+
+      - name: Build
+        run: |
+          sudo apt update && sudo apt install libfreetype6-dev && sudo apt install libfontconfig1-dev && sudo apt-get install mesa-common-dev libgl1-mesa-dev && sudo apt-get install mesa-vulkan-drivers vulkan-tools libvulkan-dev
+          chmod +x ./build_all.sh
+          ./build_all.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-linux-arm
+          path: out/*
+
+  build-windows-x86:
+    name: Build on Windows x86
     runs-on: windows-latest
     steps:
       - name: Checkout Project
@@ -36,7 +55,25 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build-windows
+          name: build-windows-x86
+          path: out/*
+
+  build-windows-arm:
+    name: Build on Windows ARM
+    runs-on: windows-11-arm
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v4.2.2
+
+      - name: Build
+        shell: bash
+        run: |
+         ./build_all.bat
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-windows-arm
           path: out/*
 
   build-macos-arm:
