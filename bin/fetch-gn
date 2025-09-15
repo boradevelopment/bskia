@@ -20,7 +20,13 @@ os.chdir(os.path.join(os.path.dirname(__file__), os.pardir))
 gnzip = os.path.join(tempfile.mkdtemp(), 'gn.zip')
 with open(gnzip, 'wb') as f:
   OS  = {'darwin': 'mac', 'linux': 'linux', 'linux2': 'linux', 'win32': 'windows'}[sys.platform]
-  cpu = {'aarch64': 'arm64', 'amd64': 'amd64', 'arm64': 'arm64', 'x86_64': 'amd64'}[platform.machine().lower()]
+  cpu = platform.machine().lower()
+
+  if OS == 'windows' and cpu in ('aarch64', 'arm64'):
+        print("Warning: Windows ARM64 detected. For some reason, gn on google servers are dead, falling back to x86_64 GN binary")
+        cpu = 'amd64'
+  else:
+        cpu = {'aarch64': 'arm64', 'amd64': 'amd64', 'arm64': 'arm64', 'x86_64': 'amd64'}[cpu]
 
   rev = 'b2afae122eeb6ce09c52d63f67dc53fc517dbdc8'
   url = 'https://chrome-infra-packages.appspot.com/dl/gn/gn/{}-{}/+/git_revision:{}'.format(
