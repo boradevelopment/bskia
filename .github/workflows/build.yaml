@@ -11,7 +11,7 @@ jobs:
 
       - name: Build
         run: |
-          sudo apt update && sudo apt install libfreetype6-dev
+          sudo apt update && sudo apt install libfreetype6-dev && sudo apt install libfontconfig1-dev
           chmod +x ./build_all.sh
           ./build_all.sh
 
