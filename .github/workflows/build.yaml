@@ -1,0 +1,53 @@
+name: Build on push
+
+on:
+  push:
+
+jobs:
+  build-linux:
+    name: Build on Linux
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v4.2.2
+
+      - name: Build
+        run: |
+          chmod +x ./build_all.sh
+          ./build_all.sh
+
+  build-windows:
+    name: Build on Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v4.2.2
+
+      - name: Build
+        shell: bash
+        run: |
+         ./build_all.bat
+
+  build-macos-arm:
+    name: Build on macOS ARM
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v4.2.2
+
+       - name: Build
+         run: |
+          chmod +x ./build_all.sh
+          ./build_all.sh
+
+  build-macos-x86:
+    name: Build on macOS x86
+    runs-on: macos-13
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v4.2.2
+
+       - name: Build
+         run: |
+          chmod +x ./build_all.sh
+          ./build_all.sh
