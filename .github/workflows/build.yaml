@@ -1,8 +1,5 @@
 name: Build on push
 
-on:
-  push:
-
 jobs:
   build-linux:
     name: Build on Linux
