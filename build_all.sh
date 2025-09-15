@@ -26,11 +26,18 @@ bin/gn gen "$BUILDDIR/Debug" --args='is_debug=true is_official_build=false skia_
 echo "Building in separate processes..."
 
 if [ "$PLATFORM" = "Linux" ] || [ "$PLATFORM" = "macOS" ]; then
+    # Detect CPU count
+    if command -v nproc >/dev/null 2>&1; then
+        JOBS=$(nproc)
+    else
+        JOBS=$(sysctl -n hw.ncpu)
+    fi
+
     # Run both builds in background
-    ninja -C "$BUILDDIR/Release" skia -j"$(nproc || sysctl -n hw.ncpu)" &
+    ninja -C "$BUILDDIR/Release" skia -j"$JOBS" &
     PID1=$!
 
-    ninja -C "$BUILDDIR/Debug" skia -j"$(nproc || sysctl -n hw.ncpu)" &
+    ninja -C "$BUILDDIR/Debug" skia -j"$JOBS" &
     PID2=$!
 
     # Wait for both to finish

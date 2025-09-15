@@ -11,6 +11,7 @@ jobs:
 
       - name: Build
         run: |
+          sudo apt update && sudo apt install libfreetype6-dev
           chmod +x ./build_all.sh
           ./build_all.sh
 
@@ -35,6 +36,7 @@ jobs:
 
       - name: Build
         run: |
+          
           chmod +x ./build_all.sh
           ./build_all.sh
 
@@ -47,5 +49,6 @@ jobs:
 
       - name: Build
         run: |
+          
           chmod +x ./build_all.sh
           ./build_all.sh
