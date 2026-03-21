@@ -15,7 +15,6 @@
 #include "include/gpu/ganesh/GrContextOptions.h"
 #include "include/gpu/ganesh/GrRecordingContext.h"
 #include "include/gpu/ganesh/GrTypes.h"
-
 #include <chrono>
 #include <cstddef>
 #include <cstdint>

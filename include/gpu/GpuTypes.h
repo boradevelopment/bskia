@@ -10,6 +10,10 @@
 
 #include "include/core/SkTypes.h"
 
+#ifdef WIN32
+#define SK_DIRECT3D
+#endif
+
 /**
  * This file includes numerous public types that are used by all of our gpu backends.
  */
