@@ -86,7 +86,7 @@ with open(ninjazip, 'wb') as f:
   f.write(urlopen(url).read())
 
 with zipfile.ZipFile(ninjazip, 'r') as f:
-  f.extract(ninja, os.path.join('third_party', 'ninja'))
+  f.extract(ninja, os.path.join('bin'))
 
 if not 'windows' in platform:
   uid = os.getuid()
