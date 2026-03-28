@@ -1,8 +1,7 @@
 name: Notify Root Repo
-
 on:
   push:
-    branches: [latest]
+    branches: ["*"]
 
 jobs:
   notify:
@@ -13,5 +12,11 @@ jobs:
           curl -X POST \
             -H "Authorization: token ${{ secrets.BORA_ROOT_PAL }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/boradevelopment/bora/dispatches \
-            -d '{"event_type":"update_submodule","client_payload":{"repo":"${{ github.repository }}"}}'
+            https://api.github.com/repos/boradevelopment/bora-global/dispatches \
+            -d '{
+              "event_type": "update_submodule",
+              "client_payload": {
+                "repo": "${{ github.repository }}",
+                "branch": "${{ github.ref_name }}"
+              }
+            }'
