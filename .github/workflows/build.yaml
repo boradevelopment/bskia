@@ -15,8 +15,8 @@ jobs:
           chmod +x ./build_all.sh
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
-          ./build_all.sh ./out DEBUG /fsanitize=address ASAN
-          ./build_all.sh ./out RELEASE /fsanitize=address ASAN
+          ./build_all.sh ./out DEBUG -fsanitize=address ASAN
+          ./build_all.sh ./out RELEASE -fsanitize=address ASAN
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -37,8 +37,8 @@ jobs:
           chmod +x ./build_all.sh
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
-          ./build_all.sh ./out DEBUG /fsanitize=address ASAN
-          ./build_all.sh ./out RELEASE /fsanitize=address ASAN
+          ./build_all.sh ./out DEBUG -fsanitize=address ASAN
+          ./build_all.sh ./out RELEASE -fsanitize=address ASAN
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -58,8 +58,8 @@ jobs:
         run: |
          ./build_all.bat ./out DEBUG
          ./build_all.bat ./out RELEASE
-         ./build_all.bat ./out DEBUG -fsanitize=address ASAN
-         ./build_all.bat ./out RELEASE -fsanitize=address ASAN
+         ./build_all.bat ./out DEBUG /fsanitize=address ASAN
+         ./build_all.bat ./out RELEASE /fsanitize=address ASAN
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -79,8 +79,8 @@ jobs:
         run: |
          ./build_all.bat ./out DEBUG
          ./build_all.bat ./out RELEASE
-         ./build_all.bat ./out DEBUG -fsanitize=address ASAN
-         ./build_all.bat ./out RELEASE -fsanitize=address ASAN
+         ./build_all.bat ./out DEBUG /fsanitize=address ASAN
+         ./build_all.bat ./out RELEASE /fsanitize=address ASAN
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -100,8 +100,8 @@ jobs:
           chmod +x ./build_all.sh
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
-          ./build_all.sh ./out DEBUG /fsanitize=address ASAN
-          ./build_all.sh ./out RELEASE /fsanitize=address ASAN
+          ./build_all.sh ./out DEBUG -fsanitize=address ASAN
+          ./build_all.sh ./out RELEASE -fsanitize=address ASAN
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -120,8 +120,8 @@ jobs:
           chmod +x ./build_all.sh
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
-          ./build_all.sh ./out DEBUG /fsanitize=address ASAN
-          ./build_all.sh ./out RELEASE /fsanitize=address ASAN
+          ./build_all.sh ./out DEBUG -fsanitize=address ASAN
+          ./build_all.sh ./out RELEASE -fsanitize=address ASAN
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
