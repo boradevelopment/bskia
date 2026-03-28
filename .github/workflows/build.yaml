@@ -118,7 +118,10 @@ jobs:
       - name: Build
         run: |
           chmod +x ./build_all.sh
-          ./build_all.sh
+          ./build_all.sh ./out DEBUG
+          ./build_all.sh ./out RELEASE
+          ./build_all.sh ./out DEBUG /fsanitize=address ASAN
+          ./build_all.sh ./out RELEASE /fsanitize=address ASAN
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
