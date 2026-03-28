@@ -12,7 +12,7 @@ jobs:
       - name: Build
         run: |
           sudo apt update && sudo apt install libfreetype6-dev && sudo apt install libfontconfig1-dev && sudo apt-get install mesa-common-dev libgl1-mesa-dev && sudo apt-get install mesa-vulkan-drivers vulkan-tools libvulkan-dev
-          chmod +x ./build_all.sh
+          chmod +x ./build_all.sh && chmod +x ./bin/ninja
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
           ./build_all.sh ./out DEBUG /fsanitize=address ASAN
@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: |
           sudo apt update && sudo apt install libfreetype6-dev && sudo apt install libfontconfig1-dev && sudo apt-get install mesa-common-dev libgl1-mesa-dev && sudo apt-get install mesa-vulkan-drivers vulkan-tools libvulkan-dev
-          chmod +x ./build_all.sh
+          chmod +x ./build_all.sh && chmod +x ./bin/ninja
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
           ./build_all.sh ./out DEBUG /fsanitize=address ASAN
@@ -97,8 +97,7 @@ jobs:
 
       - name: Build
         run: |
-          
-          chmod +x ./build_all.sh
+          chmod +x ./build_all.sh && chmod +x ./bin/ninja
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
           ./build_all.sh ./out DEBUG /fsanitize=address ASAN
@@ -108,25 +107,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-osx-arm
-          path: out/*
-
-  build-macos-x86:
-    name: Build on macOS x86
-    runs-on: macos-13
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4.2.2
-
-      - name: Build
-        run: |
-          chmod +x ./build_all.sh
-          ./build_all.sh ./out DEBUG
-          ./build_all.sh ./out RELEASE
-          ./build_all.sh ./out DEBUG /fsanitize=address ASAN
-          ./build_all.sh ./out RELEASE /fsanitize=address ASAN
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-osx-x86
           path: out/*
