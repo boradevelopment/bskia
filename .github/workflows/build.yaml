@@ -110,7 +110,7 @@ jobs:
           path: out/*
   build-macos-x86:
     name: Build on macOS x86
-    runs-on: macos-latest-large
+    runs-on: macos-15-intel
     steps:
       - name: Checkout Project
         uses: actions/checkout@v4.2.2
