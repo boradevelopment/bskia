@@ -68,6 +68,8 @@ echo "Generating GN Build Files..."
 # Debug
 ./bin/gn gen "$BUILDDIR/Debug$EXTRA_BUILD_NAME" --args="is_debug=true is_official_build=false extra_cflags_cc=[$FINAL_CFLAGS] $GN_ARGS"
 
+chmod +x ./bin/ninja
+
 # 7. Ninja Build Function
 run_build() {
     local type=$1 

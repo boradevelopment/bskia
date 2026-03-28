@@ -12,7 +12,7 @@ jobs:
       - name: Build
         run: |
           sudo apt update && sudo apt install libfreetype6-dev && sudo apt install libfontconfig1-dev && sudo apt-get install mesa-common-dev libgl1-mesa-dev && sudo apt-get install mesa-vulkan-drivers vulkan-tools libvulkan-dev
-          chmod +x ./build_all.sh && chmod +x ./bin/ninja
+          chmod +x ./build_all.sh
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
           ./build_all.sh ./out DEBUG /fsanitize=address ASAN
@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: |
           sudo apt update && sudo apt install libfreetype6-dev && sudo apt install libfontconfig1-dev && sudo apt-get install mesa-common-dev libgl1-mesa-dev && sudo apt-get install mesa-vulkan-drivers vulkan-tools libvulkan-dev
-          chmod +x ./build_all.sh && chmod +x ./bin/ninja
+          chmod +x ./build_all.sh
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
           ./build_all.sh ./out DEBUG /fsanitize=address ASAN
@@ -97,7 +97,7 @@ jobs:
 
       - name: Build
         run: |
-          chmod +x ./build_all.sh && chmod +x ./bin/ninja
+          chmod +x ./build_all.sh
           ./build_all.sh ./out DEBUG
           ./build_all.sh ./out RELEASE
           ./build_all.sh ./out DEBUG /fsanitize=address ASAN
