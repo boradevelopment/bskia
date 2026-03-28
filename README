@@ -1,4 +1,4 @@
-A fork of Skia designed for BORA Source.
+- A fork of Skia designed for the entire BORA Source
 Skia is a complete 2D graphic library for drawing Text, Geometries, and Images.
 
-See full details, and build instructions, at https://skia.org.
+To build, there are dedicated build system files, this will replaced with .bapp files to simplify the development process.
